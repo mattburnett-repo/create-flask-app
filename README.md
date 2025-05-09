@@ -1,5 +1,7 @@
 # create-flask-app
 
+**This project is currently WIP**
+
 This project provides a command-line tool to scaffold a Flask app with specified blueprints. It generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint.
 
 This is the code for the CLI tool; you have to build it yourself, following the steps in the 'Installation' section, below. After the tool works well, I'll upload a binary version to download from this repo.
