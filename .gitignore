@@ -1,0 +1,8 @@
+build/
+dist/
+venv/
+
+*.code-workspace
+.env
+*.pyc
+*.spec
