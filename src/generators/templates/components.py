@@ -18,8 +18,7 @@ def generate_navbar(blueprint_list=None, app_name=None):
         for bp in blueprint_list:
             nav_links += f'<a href="/{bp}" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">{bp.title()}</a>\n'
     
-    return """{% block navbar %}
-<nav class="bg-blue-600 p-4">
+    return f"""<nav class="bg-blue-600 p-4">
   <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
     <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -31,12 +30,12 @@ def generate_navbar(blueprint_list=None, app_name=None):
                 </svg>
             </button>
         </div>
-        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div class="flex-shrink-0 text-white text-2xl">{{ app_name }}</div>
+        <div class="flex-1 flex items-center justify-between">
+            <div class="flex-shrink-0 flex-grow-0 text-white text-2xl mr-8">{{{{ app_name }}}}</div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
                   <a href="/" class="text-white hover:bg-blue-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                  """ + nav_links + """
+                  {nav_links}
               </div>
             </div>
             <div class="hidden sm:flex items-center ml-auto">
@@ -52,8 +51,7 @@ def generate_navbar(blueprint_list=None, app_name=None):
             </div>
         </div>
     </div>
-</nav>
-{% endblock %}"""
+</nav>"""
 
 def generate_flash_messages():
     """

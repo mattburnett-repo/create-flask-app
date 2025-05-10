@@ -1,6 +1,6 @@
 def generate_blueprint_init(path, app_name=None):
     bp_name = path.split("/")[1]
-    return f"""from flask import Blueprint, render_template, request, redirect, url_for, flash
+    return f"""from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from app.database import db
 
 bp = Blueprint('{bp_name}', __name__, url_prefix='/{bp_name}')
@@ -11,6 +11,7 @@ def index():
     results = db.get_db().execute(f'SELECT * FROM {bp_name}').fetchall()
     return render_template('{bp_name}/list.html', 
                          blueprint_name='{bp_name}',
+                         app_name=current_app.config['APP_NAME'],
                          results=results)
 
 @bp.route('/create', methods=['GET', 'POST'])
@@ -24,7 +25,9 @@ def create():
         conn.commit()
         flash('Item created successfully!', 'success')
         return redirect(url_for('{bp_name}.index'))
-    return render_template('{bp_name}/create.html', blueprint_name='{bp_name}')
+    return render_template('{bp_name}/create.html', 
+                         blueprint_name='{bp_name}',
+                         app_name=current_app.config['APP_NAME'])
 
 @bp.route('/<int:id>/edit', methods=['GET', 'POST'])
 def edit(id):
@@ -41,6 +44,7 @@ def edit(id):
     result = conn.execute(f'SELECT * FROM {bp_name} WHERE id = ?', (id,)).fetchone()
     return render_template('{bp_name}/edit.html', 
                          blueprint_name='{bp_name}',
+                         app_name=current_app.config['APP_NAME'],
                          result=result)
 
 @bp.route('/<int:id>/delete', methods=['POST'])
@@ -50,4 +54,12 @@ def delete(id):
     conn.commit()
     flash('Item deleted successfully!', 'success')
     return redirect(url_for('{bp_name}.index'))
+
+@bp.route('/<int:id>')
+def detail(id):
+    result = db.get_db().execute(f'SELECT * FROM {bp_name} WHERE id = ?', (id,)).fetchone()
+    return render_template('{bp_name}/detail.html', 
+                         blueprint_name='{bp_name}',
+                         app_name=current_app.config['APP_NAME'],
+                         result=result)
 """

@@ -8,7 +8,7 @@ def generate_base_template(app_name):
         </head>\n
         <body class="bg-gray-50 text-gray-900 font-sans">\n
             <!-- Navigation Bar -->
-            {% include "./components/_navbar.html" %}\n
+            {% include "./components/_navbar.html" with context %}\n
 
             <!-- Flash Messages -->
             {% include "./components/_flashMsgDisplay.html" %}\n
