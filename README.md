@@ -16,32 +16,43 @@ This is the code for the CLI tool; you have to build it yourself, following the 
     ```bash
     pip install -r requirements.txt
     ```
-3. Build the tool
+3. Build the tool. This will install the tool on your machine.
    ```bash
-   ./build_dev.sh
+   pip install --editable .
+   ```
+   To uninstall:
+   ```bash
+   pip uninstall create-flask-app
    ```
 ## Usage
 To generate a Flask app with specified blueprints, run the following command:
 
   ```bash
-  python create_flask_app/scaffold_flask_app.py <blueprint1> <blueprint2> ... --output <output-directory>
+  create_flask_app --app-name=your.app.name <blueprint1> <blueprint2> ...
   ```
 
-  'blueprint1' 'blueprint2' ... 
-  
-  — List of blueprint names to include in the app (e.g., users, products).
+  'blueprint1' 'blueprint2' ... is just a list of module/blueprint names to include in the app (e.g., users, products).
 
+  After the app is done, you will see some messages in the terminal. To finish the creation process, type:
+  ```bash
+  cd (your.app.name.goes.here) && pip install -r requirements.txt && flask run
+  ```
 
-  --output <output-directory> or -o 'output-directory' 
-  
-  — Optional. Specify the directory to generate the app in. Defaults to the current working directory.
 
 ## Example
   ```bash
-  python create_flask_app/scaffold_flask_app.py users products -o my_flask_app
+  create_flask_app --app-name=test users products locations
   ```
+  This will generate a Flask app with users, products and locations blueprints in the `test` directory.
 
-  This will generate a Flask app with users and products blueprints in the my_flask_app directory.
-
+  Then, when the create process is finished:
+  ```bash
+  cd test && pip install -r requirements.txt && flask run
+  ```
+  This will finish the installation and start the app. Usually the app is available at:
+  ```bash
+  localhost:5000 OR 127.0.0.1:5000
+  ```
+  
 ## License
 MIT License
