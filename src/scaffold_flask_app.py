@@ -11,6 +11,7 @@ from generators.templates.components import generate_component_templates
 from generators.templates.index import generate_index_template
 from generators.templates.empty import generate_empty_template
 from generators.blueprint_init import generate_blueprint_init
+from generators.github_actions import generate_github_actions
 
 @click.command()
 @click.argument("blueprint_list", nargs=-1)
@@ -33,7 +34,8 @@ def scaffold_flask_app(blueprint_list, app_name):
         "app/templates/components/_navbar.html",
         "app/templates/components/_flashMsgDisplay.html",
         "requirements.txt",
-        "wsgi.py"
+        "wsgi.py",
+        ".github/workflows/deploy-check.yml"
     ]
 
     # Blueprint paths and their templates
@@ -99,6 +101,8 @@ def dispatch_boilerplate(path, blueprint_list, app_name):
         return generate_database_module()
     if path.endswith("__init__.py") and path.count("/") == 2:
         return generate_blueprint_init(path, app_name)
+    if path.endswith("deploy-check.yml"):
+        return generate_github_actions()
     return ""
 
 

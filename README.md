@@ -35,7 +35,7 @@ To generate a Flask app with specified blueprints, run the following command:
 
   After the app is done, you will see some messages in the terminal. To finish the creation process, type:
   ```bash
-  cd (your.app.name.goes.here) && pip install -r requirements.txt && flask run
+  cd (your.app.name.goes.here) && pip install -r requirements.txt && flask init-db && flask run
   ```
 
 
@@ -47,12 +47,15 @@ To generate a Flask app with specified blueprints, run the following command:
 
   Then, when the create process is finished:
   ```bash
-  cd test && pip install -r requirements.txt && flask run
+  cd test && pip install -r requirements.txt && flask init-db && flask run
   ```
   This will finish the installation and start the app. Usually the app is available at:
   ```bash
   localhost:5000 OR 127.0.0.1:5000
   ```
-  
+
+## CI/CD
+This app generates a basic GitHub Actions workflow file and a wsgi.py file. This should get you started on deploying the generated app.
+
 ## License
 MIT License
