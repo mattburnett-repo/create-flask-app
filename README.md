@@ -5,16 +5,22 @@ This project provides a command-line tool to scaffold a Flask app with specified
 This is the code for the CLI tool; you have to build it yourself, following the steps in the 'Installation' section, below (it's easy to do). 
 
 ## Installation
-1. Clone the repository:
+1. Set up a `venv` environment:
+   ```bash
+   # In your project folder:
+    python3 -m venv venv
+    source venv/bin/activate
+   ```
+2. Clone the repository:
    ```bash
    git clone https://github.com/mattburnett-repo/create-flask-app
    cd <repository-directory>
-2. Install required dependencies:
+3. Install required dependencies:
 
     ```bash
     pip install -r requirements.txt
     ```
-3. Build the tool. This will install the tool on your machine.
+4. Build the tool. This will install the tool on your machine.
    ```bash
    pip install --editable .
    ```
