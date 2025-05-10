@@ -1,8 +1,16 @@
+# Folders
 build/
+create_flask_app.egg-info/
 dist/
 venv/
+test/
 
+# Config files
 *.code-workspace
 .env
 *.pyc
 *.spec
+
+# Scripts
+build_dev.sh
+install_from_github.sh

@@ -1,16 +1,17 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="create-flask-app",  # The name of your CLI tool
+    name="create-flask-app",
     version="0.1",
-    packages=find_packages(),
+    package_dir={"": "src"},
+    packages=find_packages(where="src"),
     install_requires=[
         "Flask",
         "Click"
     ],
     entry_points={
         "console_scripts": [
-            "create-flask-app = create_flask_app.scaffold_flask_app:scaffold_flask_app", 
+            "create-flask-app = scaffold_flask_app:scaffold_flask_app", 
         ],
     },
     include_package_data=True,
