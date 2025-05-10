@@ -5,6 +5,7 @@ from generators.app_init import generate_app_init
 from generators.database import generate_database_module
 from generators.wsgi import generate_wsgi
 from generators.schema import generate_schema
+from generators.sample_data import generate_sample_data
 from generators.templates.base import generate_base_template
 from generators.templates.components import generate_component_templates
 from generators.templates.index import generate_index_template
@@ -24,12 +25,13 @@ def scaffold_flask_app(blueprint_list, app_name):
     # Core paths
     paths = [
         "app/__init__.py",
-        "app/database.py",
+        "app/database/db.py",
+        "app/database/schema.sql",
+        "app/database/sample-data.sql",
         "app/templates/base.html",
         "app/templates/index.html",
         "app/templates/components/_navbar.html",
         "app/templates/components/_flashMsgDisplay.html",
-        "app/schema.sql",
         "requirements.txt",
         "wsgi.py"
     ]
@@ -61,18 +63,20 @@ def scaffold_flask_app(blueprint_list, app_name):
 
     click.echo(f"✅ Flask app '{app_name}' scaffolded successfully at: {base_dir}")
     click.echo("✅ Next, create/start a venv.")
-    click.echo(f"✅ After that's done, run , 'cd {app_name} && pip install -r requirements.txt && flask run'.")
+    click.echo(f"✅ After that's done, run , 'cd {app_name} && pip install -r requirements.txt && flask init-db && flask run'.")
 
 
 def dispatch_boilerplate(path, blueprint_list, app_name):
     if path == "app/__init__.py":
         return generate_app_init(blueprint_list, app_name)
-    if path == "app/database.py":
+    if path == "app/database/db.py":
         return generate_database_module()
     if path == "wsgi.py":
         return generate_wsgi()
-    if path == "app/schema.sql":
+    if path == "app/database/schema.sql":
         return generate_schema(blueprint_list)
+    if path == "app/database/sample-data.sql":
+        return generate_sample_data(blueprint_list)
     if path.endswith("base.html"):
       return generate_base_template(app_name)
     if path.endswith("index.html") and "templates/" in path and path.count("/") == 2:
