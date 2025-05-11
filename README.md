@@ -1,10 +1,28 @@
 # create-flask-app
 
-This project provides a command-line tool to scaffold a Flask app with specified modules (blueprints). It is based on the [Click CLI toolkit](https://click.palletsprojects.com/en/stable/) . This project generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint, and CRUD functionality for each module / blueprint is provided. There is also a basic flash messaging system.
+This project provides a command-line tool to scaffold a Flask app with specified modules (blueprints). It is based on the [Click CLI toolkit](https://click.palletsprojects.com/en/stable/) . 
+
+This project generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint, and CRUD functionality for each module / blueprint is provided. There is also a basic flash messaging system.
 
 The goal here is to reduce the amount of boilerplate effort required to start working on a small to medium size Flask project. The idea is that you start with a baseline app structure, by generating it. Once that's done, any changes you want are made to the generator code. You can iterate through the development process a little faster this way.
 
+The app structure is really simple:
+```bash
+scaffold_flask_app.py    # Controller/driver script
+/generators              # Directory of Python functions to generate the app files.
+```
+
+There are a few other helpful files after the app is generated:
+```bash
+.github/workflows/deploy-check.html     # Builds the app after push to main.
+wsgi.py                                 # Helpful when deploying to a provider.
+
+```
+
+
 This is the code for the CLI tool; you have to build it yourself, following the steps in the 'Installation' section, below (it's easy to do). 
+
+# Installation, Usage and Example
 
 ## Installation
 1. Set up a `venv` environment:
