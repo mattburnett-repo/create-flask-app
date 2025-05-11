@@ -1,6 +1,8 @@
 # create-flask-app
 
-This project provides a command-line tool to scaffold a Flask app with specified modules (blueprints). It is based on the [Click](https://click.palletsprojects.com/en/stable/) CLI toolkit. This project generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint. Basic CRUD functionality for each module / blueprint is provided. The goal here is to reduce the amount of boilerplate effort required to start working on a small to medium size Flask project.
+This project provides a command-line tool to scaffold a Flask app with specified modules (blueprints). It is based on the [Click CLI toolkit](https://click.palletsprojects.com/en/stable/) . This project generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint, and CRUD functionality for each module / blueprint is provided. There is also a basic flash messaging system.
+
+The goal here is to reduce the amount of boilerplate effort required to start working on a small to medium size Flask project. The idea is that you start with a baseline app structure, by generating it. Once that's done, any changes you want are made to the generator code. You can iterate through the development process a little faster this way.
 
 This is the code for the CLI tool; you have to build it yourself, following the steps in the 'Installation' section, below (it's easy to do). 
 
@@ -38,7 +40,7 @@ To generate a Flask app with specified blueprints, run the following command:
   'your.app.name' should be a name you chose for the app.
   'blueprint1' 'blueprint2' ... is a list of module/blueprint names to include in the app (e.g., users, products).
 
-  After the app is done, you will see some messages in the terminal. To finish the creation process, type:
+  After the app is done, you will see some informational messages in the terminal. To finish the creation process, type:
   ```bash
   cd (your.app.name.goes.here) && pip install -r requirements.txt && flask init-db && flask run
   ```
