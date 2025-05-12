@@ -34,18 +34,15 @@ wsgi.py                                 # Helpful when deploying to a provider.
    ```bash
    git clone https://github.com/mattburnett-repo/create-flask-app
    cd <repository-directory>
-3. Install required dependencies:
-
-    ```bash
-    pip install -r requirements.txt
     ```
-4. Build the tool. This will install the tool on your machine.
+3. Build the tool. This will install the tool on your machine.
    ```bash
    pip install --editable .
    ```
    To uninstall:
    ```bash
    pip uninstall create-flask-app
+   sudo rm /usr/local/bin/create-flask-app
    ```
 ## Usage
 To generate a Flask app with specified blueprints, run the following command:
