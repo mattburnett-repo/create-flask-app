@@ -1,12 +1,10 @@
-# create-flask-app
+## create-flask-app
 
-This project provides a command-line tool to scaffold a Flask app with specified modules (blueprints). It is based on the [Click CLI toolkit](https://click.palletsprojects.com/en/stable/) . 
+`create-flask-app` is a command-line tool for quickly scaffolding small to medium-sized Flask applications. Built in Python with Click, it generates a clean, opinionated project structure that removes repetitive setup and lets developers focus on application logic.
 
-This project generates the core files and directories required to set up a basic Flask application with modular blueprints. Basic database tables are created for each blueprint, and CRUD functionality for each module / blueprint is provided. There is also a basic flash messaging system.
+I designed and implemented the tool with speed, clarity, and scalability in mind. The generated architecture encourages best practices such as modular design, environment-specific configuration, and optional extensions for databases, testing, and templating.
 
-The goal here is to reduce the amount of boilerplate effort required to start working on a small to medium size Flask project. The idea is that you start with a baseline app structure, by generating it. Once that's done, any changes you want are made to the code for the generators, not the generated / output code. You can iterate through the development process a little faster this way.
-
-This repo is the code for the CLI tool; you have to build it yourself, following the steps in the 'Installation' section, below (it's easy to do). 
+By automating common setup tasks, `create-flask-app` improves developer flow and iteration speed. It reflects my focus on developer experience and on building maintainable, well-documented tools that support long-term work, not just quick starts. 
 
 The app structure of `create-flask-app` is really simple:
 ```bash
